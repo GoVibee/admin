@@ -12,6 +12,11 @@ export default function SignInPage() {
   const togglePasswordVisibility = () => {
   setShowPassword(!showPassword);
   };
+
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center lg:justify-center bg-white p-4">
       <div className="w-full max-w-sm">
@@ -91,6 +96,7 @@ export default function SignInPage() {
           {/* Submit Button */}
           <button
             type="submit"
+            onClick={() => handleSubmit}
             className="w-full cursor-pointer bg-[#3B0A45] text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3B0A45] transition-colors duration-300 font-plus"
           >
             Sign in
