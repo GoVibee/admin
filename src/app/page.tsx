@@ -27,7 +27,7 @@ export default function SignInPage() {
               type="email"
               // The placeholder needs a space to make the CSS selector work
               placeholder=" "
-              className="peer block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-900"
+              className="peer block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:border-transparent text-gray-900"
             />
             <label
               htmlFor="email"
@@ -50,7 +50,7 @@ export default function SignInPage() {
               name="password"
               type="password"
               placeholder=" "
-              className="peer block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-gray-900"
+              className="peer block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:border-transparent text-gray-900"
             />
             <label
               htmlFor="password"
@@ -75,7 +75,7 @@ export default function SignInPage() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-pink-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition-colors duration-300"
+            className="w-full cursor-pointer bg-[#3B0A45] text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3B0A45] transition-colors duration-300 font-plus"
           >
             Sign in
           </button>
