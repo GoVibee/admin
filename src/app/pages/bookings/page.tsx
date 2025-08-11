@@ -3,9 +3,10 @@
 import Sidebar from "../../components/layout/Sidebar";
 import Topbar from "../../components/layout/Topbar";
 import { motion } from 'framer-motion';
-import { Search } from 'lucide-react';
 import Badge from '../../components/ui/Badge';
 import FilterDropdown from '../../components/ui/FilterDropdown';
+import React, { useState } from 'react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
 
 const bookingsData = [
   { customer: 'Sophia Carter', venue: 'The Urban Bistro', venueDetails: '', date: '2024-07-20', time: '19:00', status: 'Confirmed' as const },
@@ -15,9 +16,14 @@ const bookingsData = [
   { customer: 'Ava Morgan', venue: 'The City Lights Bar', venueDetails: '', date: '2024-07-24', time: '21:00', status: 'Confirmed' as const },
 ];
 
+const SidebarLink = ({ icon: Icon, text, active }: any) => (
+  <a href="#" className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+    <Icon className="w-5 h-5" />
+    <span className="flex-1">{text}</span>
+  </a>
+);
 
-
-export default function Home() {
+export default function HomePage() {
     const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -33,11 +39,60 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+    const sidebarNavItems = [
+      { icon: LayoutDashboard, text: 'Dashboard' },
+      { icon: Calendar, text: 'Bookings' },
+      { icon: Home, text: 'Restaurants', active: true },
+      { icon: Settings, text: 'Settings' },
+      { icon: BarChart2, text: 'Analytics' },
+      { icon: Beer, text: 'Bars and Clubs' },
+      { icon: Coffee, text: 'Cafes' },
+      { icon: Users, text: 'Users' }, ]
+
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      <Sidebar />
+    <div className="lg:flex min-h-screen bg-gray-50 w-full">
+     <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+             <div className="p-6 flex items-center space-x-2 border-b">
+               <div className="text-2xl font-bold text-gray-800">
+                 <span className="text-purple-600">Go</span>Vibe
+               </div>
+             </div>
+             <nav className="flex-1 p-4 space-y-2">
+               {sidebarNavItems.map(item => (
+                 <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} />
+               ))}
+             </nav>
+             <div className="p-4 border-t">
+               <SidebarLink icon={HelpCircle} text="Help and Docs" />
+             </div>
+           </aside>
+           
+           {/* Backdrop for mobile sidebar */}
+           {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
       <div className="flex-1 flex flex-col">
-        <Topbar />
+         <header className="flex justify-between items-center mb-8 w-[90%] mx-auto lg:w-full mt-5">
+                      <div className="flex items-center space-x-4">
+                                     <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                         {isSidebarOpen ? <X/> : <Menu />}
+                                     </button>
+                                  </div>
+                       {/* <div className="w-40"/> */}
+                     <div className="flex items-center gap-6">
+                       <button className="relative">
+                         <Bell size={24} className="text-gray-500" />
+                         <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                           3
+                         </span>
+                       </button>
+                       <img
+                         src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                         alt="User Avatar"
+                         className="w-10 h-10 rounded-full object-cover"
+                       />
+                     </div>
+                   </header>
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div >
           {/* Header Section */}
