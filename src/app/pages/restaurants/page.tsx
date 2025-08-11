@@ -44,7 +44,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="lg:flex min-h-screen bg-gray-50 w-full">
       {/* --- Sidebar --- */}
       <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
         <div className="p-6 flex items-center space-x-2 border-b">
@@ -68,26 +68,28 @@ export default function DashboardPage() {
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col">
         {/* --- Top Header --- */}
-        <header className="bg-white shadow-sm sticky top-0 z-30">
-          <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-             <div className="flex items-center space-x-4">
-                <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                    {isSidebarOpen ? <X/> : <Menu />}
+          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto lg:w-full mt-5">
+               <div className="flex items-center space-x-4">
+                              <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                  {isSidebarOpen ? <X/> : <Menu />}
+                              </button>
+                           </div>
+                {/* <div className="w-40"/> */}
+              <div className="flex items-center gap-6">
+                <button className="relative">
+                  <Bell size={24} className="text-gray-500" />
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                    3
+                  </span>
                 </button>
-                <div className="hidden lg:block text-xl font-bold text-gray-800">
-                    <span className="text-purple-600">Go</span>Vibe
-                </div>
-             </div>
-            <div className="flex items-center space-x-4">
-              <button className="text-gray-500 hover:text-gray-700">
-                <Bell className="w-6 h-6" />
-              </button>
-              <div className="w-10 h-10 rounded-full overflow-hidden">
-                <Image src={image1} alt="User Avatar" width={40} height={40} />
+                <img
+                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
               </div>
-            </div>
-          </div>
-        </header>
+            </header>
+        
 
         {/* --- Page Content --- */}
         <main className="flex-1 p-6 lg:p-8">

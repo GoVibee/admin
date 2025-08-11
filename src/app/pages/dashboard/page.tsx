@@ -33,7 +33,7 @@ export default function HomePage() {
       { icon: Users, text: 'Users' },
     ];
   return (
-    <div className=" lg:flex min-h-screen bg-gray-50 border-2 border-red-600 w-full">
+    <div className=" lg:flex min-h-screen bg-gray-50 w-full">
        <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
         <div className="p-6 flex items-center space-x-2 border-b">
           <div className="text-2xl font-bold text-gray-800">
