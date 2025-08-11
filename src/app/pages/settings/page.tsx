@@ -1,0 +1,139 @@
+'use client';
+
+import React, { useState } from 'react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Bell, Menu, X, User, Users2, BellRing, CreditCard, Shield, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import image1 from '../../../assets/go.png';
+
+// --- Reusable Components ---
+const SidebarLink = ({ icon: Icon, text, active }: any) => (
+  <a href="#" className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+    <Icon className="w-5 h-5" />
+    <span className="flex-1">{text}</span>
+  </a>
+);
+
+const SettingsItem = ({ icon: Icon, title, description }: any) => (
+    <a href="#" className="flex items-center p-4 bg-gray-50/50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+        <div className="bg-white p-3 rounded-lg border border-gray-200 mr-4">
+            <Icon className="w-6 h-6 text-gray-600" />
+        </div>
+        <div className="flex-1">
+            <h3 className="font-semibold text-gray-800">{title}</h3>
+            <p className="text-sm text-gray-500">{description}</p>
+        </div>
+        <ChevronRight className="w-5 h-5 text-gray-400" />
+    </a>
+)
+
+// --- Main Dashboard Component ---
+export default function SettingsPage() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const sidebarNavItems = [
+    { icon: LayoutDashboard, text: 'Dashboard' },
+    { icon: Calendar, text: 'Bookings' },
+    { icon: Home, text: 'Restaurants' },
+    { icon: Settings, text: 'Settings', active: true },
+    { icon: BarChart2, text: 'Analytics' },
+    { icon: Beer, text: 'Bars and Clubs' },
+    { icon: Coffee, text: 'Cafes' },
+    { icon: Users, text: 'Users' },
+  ];
+
+  const settingsSections = [
+      {
+          title: 'Account',
+          items: [
+              { icon: User, title: 'Account details', description: 'Manage your account details' },
+              { icon: Users2, title: 'Team members', description: 'Manage your team members' },
+          ]
+      },
+    //   {
+    //       title: 'Notifications',
+    //       items: [
+    //           { icon: BellRing, title: 'Notification settings', description: 'Manage your notification preferences' },
+    //       ]
+    //   },
+    //   {
+    //       title: 'Payments',
+    //       items: [
+    //           { icon: CreditCard, title: 'Payment methods', description: 'Manage your payment methods' },
+    //       ]
+    //   },
+    //   {
+    //       title: 'Policies',
+    //       items: [
+    //           { icon: Shield, title: 'Platform policies', description: 'Manage your platform policies' },
+    //       ]
+    //   }
+  ]
+
+  return (
+    <div className=" lg:flex min-h-screen bg-gray-50 w-full">
+      {/* --- Sidebar --- */}
+     <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
+        <div className="p-6 flex items-center space-x-2 border-b">
+          <div className="text-2xl font-bold text-gray-800">
+            <span className="text-purple-600">Go</span>Vibe
+          </div>
+        </div>
+        <nav className="flex-1 p-4 space-y-2">
+          {sidebarNavItems.map(item => (
+            <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} />
+          ))}
+        </nav>
+      </aside>
+      
+      {/* Backdrop for mobile sidebar */}
+      {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
+
+      {/* --- Main Content --- */}
+      <div className="flex-1 flex flex-col">
+        {/* --- Top Header --- */}
+            <header className="flex justify-between items-center mb-8">
+             <div className="flex items-center space-x-4">
+                            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                {isSidebarOpen ? <X/> : <Menu />}
+                            </button>
+                         </div>
+              {/* <div className="w-40"/> */}
+            <div className="flex items-center gap-6">
+              <button className="relative">
+                <Bell size={24} className="text-gray-500" />
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  3
+                </span>
+              </button>
+              <img
+                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                alt="User Avatar"
+                className="w-10 h-10 rounded-full object-cover"
+              />
+            </div>
+          </header>
+
+        {/* --- Page Content --- */}
+        <main className="flex-1 p-6 lg:p-8">
+          <div className="container mx-auto">
+            <h1 className="text-3xl font-bold text-gray-800 mb-8">Settings</h1>
+
+            <div className="max-w-4xl mx-auto space-y-10">
+                {settingsSections.map(section => (
+                    <section key={section.title}>
+                        <h2 className="text-xl font-semibold text-gray-800 mb-4">{section.title}</h2>
+                        <div className="space-y-4">
+                            {section.items.map(item => (
+                                <SettingsItem key={item.title} icon={item.icon} title={item.title} description={item.description} />
+                            ))}
+                        </div>
+                    </section>
+                ))}
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
