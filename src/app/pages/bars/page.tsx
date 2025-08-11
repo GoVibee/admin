@@ -68,27 +68,27 @@ export default function DashboardPage() {
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col">
         {/* --- Top Header --- */}
-          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto lg:w-full mt-5">
-               <div className="flex items-center space-x-4">
-                              <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
-                                  {isSidebarOpen ? <X/> : <Menu />}
-                              </button>
-                           </div>
-                {/* <div className="w-40"/> */}
-              <div className="flex items-center gap-6">
-                <button className="relative">
-                  <Bell size={24} className="text-gray-500" />
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                    3
-                  </span>
-                </button>
-                <img
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                  alt="User Avatar"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-              </div>
-            </header>
+          <header className="flex justify-between items-center mb-8">
+                <div className="flex items-center space-x-4">
+                               <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                                   {isSidebarOpen ? <X/> : <Menu />}
+                               </button>
+                            </div>
+                 {/* <div className="w-40"/> */}
+               <div className="flex items-center gap-6">
+                 <button className="relative">
+                   <Bell size={24} className="text-gray-500" />
+                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                     3
+                   </span>
+                 </button>
+                 <img
+                   src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                   alt="User Avatar"
+                   className="w-10 h-10 rounded-full object-cover"
+                 />
+               </div>
+             </header>
         
 
         {/* --- Page Content --- */}
