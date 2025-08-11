@@ -1,8 +1,13 @@
-import { Search, Bell } from "lucide-react";
+import { Search, Bell,X,Menu } from "lucide-react";
 
-export default function Header() {
+export default function Header({setIsSidebarOpen,isSidebarOpen}: any) {
   return (
     <header className="flex justify-between items-center mb-8">
+       <div className="flex items-center space-x-4">
+                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
+                          {isSidebarOpen ? <X/> : <Menu />}
+                      </button>
+                   </div>
         <div className="w-40"/>
       <div className="flex items-center gap-6">
         <div className="relative">
