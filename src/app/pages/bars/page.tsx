@@ -15,8 +15,8 @@ const venues = [
 ];
 
 // --- Reusable Components ---
-const SidebarLink = ({ icon: Icon, text, active }: any) => (
-  <a href="#" className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
+  <a href={route} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
     <Icon className="w-5 h-5" />
     <span className="flex-1">{text}</span>
   </a>
@@ -32,16 +32,16 @@ const StatusBadge = ({ status }: any) => (
 export default function DashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const sidebarNavItems = [
-    { icon: LayoutDashboard, text: 'Dashboard' },
-    { icon: Calendar, text: 'Bookings' },
-    { icon: Home, text: 'Restaurants', active: true },
-    { icon: Settings, text: 'Settings' },
-    { icon: BarChart2, text: 'Analytics' },
-    { icon: Beer, text: 'Bars and Clubs' },
-    { icon: Coffee, text: 'Cafes' },
-    { icon: Users, text: 'Users' },
-  ];
+ const sidebarNavItems = [
+                  { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
+                  { icon: Calendar, text: 'Bookings',route: '/pages/bookings'},
+                  { icon: Home, text: 'Restaurants',route: '/pages/restaurants'},
+                  { icon: BarChart2, text: 'Analytics',route: '/pages/analytics' },
+                  { icon: Beer, text: 'Bars and Clubs',route: '/pages/bars',active: true    },
+                  { icon: Coffee, text: 'Cafes',route: '/pages/cafes'},
+                  { icon: Users, text: 'Users',route: '/pages/users'},
+                  { icon: Settings, text: 'Settings',route: '/pages/settings'},
+                ];
 
   return (
     <div className="lg:flex min-h-screen bg-gray-50 w-full">
@@ -54,7 +54,7 @@ export default function DashboardPage() {
         </div>
         <nav className="flex-1 p-4 space-y-2">
           {sidebarNavItems.map(item => (
-            <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} />
+            <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
           ))}
         </nav>
         <div className="p-4 border-t">
