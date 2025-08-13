@@ -44,7 +44,7 @@ export default function DashboardPage() {
      ];
 
   return (
-    <div className="lg:flex min-h-screen bg-gray-50 w-full">
+    <div className="lg:flex min-h-screen bg-gray-50 w-full font-plus">
       {/* --- Sidebar --- */}
       <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
         <div className="p-6 flex items-center space-x-2 border-b">
@@ -68,7 +68,7 @@ export default function DashboardPage() {
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col">
         {/* --- Top Header --- */}
-          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto lg:w-full mt-5">
+          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
                <div className="flex items-center space-x-4">
                               <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
                                   {isSidebarOpen ? <X/> : <Menu />}

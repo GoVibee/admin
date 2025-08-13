@@ -73,7 +73,7 @@ export default function HomePage() {
            {/* Backdrop for mobile sidebar */}
            {isSidebarOpen && <div className="fixed inset-0 bg-black/30 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>}
       <div className="flex-1 flex flex-col">
-         <header className="flex justify-between items-center mb-8 w-[90%] mx-auto lg:w-full mt-5">
+         <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
                       <div className="flex items-center space-x-4">
                                      <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
                                          {isSidebarOpen ? <X/> : <Menu />}
@@ -97,7 +97,7 @@ export default function HomePage() {
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div >
           {/* Header Section */}
-          <div  className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4">
+          <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
             <h1 className="text-3xl font-bold text-gray-900">Bookings</h1>
             <button className="bg-violet-600 text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
               New Booking
@@ -115,7 +115,7 @@ export default function HomePage() {
                   className="w-full pl-12 pr-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-400"
                 />
               </div>
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3 font-plus">
                 <FilterDropdown label="Venue" />
                 <FilterDropdown label="Date" />
                 <FilterDropdown label="Status" />
@@ -124,7 +124,7 @@ export default function HomePage() {
           </div>
 
           {/* Bookings Table Section */}
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div className="bg-white rounded-lg shadow-sm overflow-hidden font-plus">
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 {/* Desktop Table Header */}
