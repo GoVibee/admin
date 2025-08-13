@@ -95,9 +95,10 @@ export default function CustomersPage() {
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Customers</h1>
-              <button className="bg-purple-100 cursor-pointer text-purple-700 px-5 py-2.5 rounded-lg font-semibold hover:bg-purple-200 transition-colors">
+              {/* <button className="bg-purple-100 cursor-pointer text-purple-700 px-5 py-2.5 rounded-lg font-semibold hover:bg-purple-200 transition-colors">
                 Add Customer
-              </button>
+              </button> */}
+              <div className='w-40'/>
             </div>
 
             {/* Search Bar */}
@@ -119,7 +120,7 @@ export default function CustomersPage() {
                     <th className="p-4 font-semibold text-gray-600 hidden md:table-cell">Email</th>
                     <th className="p-4 font-semibold text-gray-600 hidden lg:table-cell">Join Date</th>
                     <th className="p-4 font-semibold text-gray-600 hidden lg:table-cell">Last Booking</th>
-                    <th className="p-4 font-semibold text-gray-600">Role</th>
+                    <th className="p-4 font-semibold text-gray-600">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -130,7 +131,9 @@ export default function CustomersPage() {
                       <td className="p-4 text-gray-600 hidden lg:table-cell">{customer.joinDate}</td>
                       <td className="p-4 text-gray-600 hidden lg:table-cell">{customer.lastBooking}</td>
                       <td className="p-4">
-                        <RoleBadge role={customer.role} />
+                        <div className="flex items-center space-x-3 text-sm font-medium text-gray-500">
+                          <a href="#" className="text-red-700">Delete</a>
+                        </div>
                       </td>
                     </tr>
                   ))}
