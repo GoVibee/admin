@@ -96,9 +96,10 @@ export default function HomePage() {
           {/* Header Section */}
           <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
             <h1 className="text-3xl font-bold text-gray-900">Bookings</h1>
-            <button className="bg-violet-600 cursor-pointer text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
+            {/* <button className="bg-violet-600 cursor-pointer text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
               New Booking
-            </button>
+            </button> */}
+            <div className="w-40"/>
           </div>
 
           {/* Search and Filter Section */}
@@ -135,7 +136,7 @@ export default function HomePage() {
                     <th className="px-6 py-3 text-sm font-semibold text-gray-600">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-200 font-plus">
                   {bookingsData.map((booking, index) => (
                     // On mobile, each row is a card. On desktop, it's a standard table row.
                     <tr key={index} className="block md:table-row p-4 md:p-0 border-b md:border-b-0">
