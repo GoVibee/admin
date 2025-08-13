@@ -145,6 +145,11 @@ export default function SettingsPage() {
                         <FormInput label="Password" placeholder="*******" type="tel" />
                         <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" />
                     </div>
+                    <div className="mt-6">
+                    <button className="w-full cursor-pointer text-purple-600 font-semibold border-2 border-purple-200 rounded-lg py-2.5 hover:bg-purple-50 transition-colors">
+                        Save changes
+                    </button>
+                </div>
             </div>
 
           </div>
