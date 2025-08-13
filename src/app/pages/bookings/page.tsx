@@ -166,13 +166,11 @@ export default function HomePage() {
                       </td>
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
-                        <a href="#" className="text-gray-600 hover:text-violet-800 mr-3">
-                          View | 
+                        <a href="#" className="text-violet-800">
+                          View 
                         </a>
-                        <a href="#" className="text-gray-600 hover:text-violet-800 mr-3">
-                          Edit | 
-                        </a>
-                        <a href="#" className="text-gray-600 hover:text-violet-800">
+                        <span className="text-black mx-1"> | </span>
+                        <a href="#" className="text-red-700">
                          Cancel
                         </a>
                       </td>
