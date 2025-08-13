@@ -140,7 +140,7 @@ export default function DashboardPage() {
                         <div className="flex items-center space-x-3 text-sm font-medium text-gray-500">
                           <a  href={`/pages/restaurants/edit`} className="hover:text-purple-600">Edit</a>
                           <span className="text-gray-300">|</span>
-                          <a href="#" className="hover:text-purple-600">Disable</a>
+                          <a href="#" className="hover:text-red-700">Disable</a>
                           <span className="text-gray-300">|</span>
                           <a href={`/pages/restaurants/${venue.id}`} className="hover:text-purple-600">View Profile</a>
                         </div>
