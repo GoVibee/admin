@@ -25,6 +25,13 @@ const SettingsItem = ({ icon: Icon, title, description }: any) => (
     </a>
 )
 
+const FormInput = ({ label, placeholder, type = 'text' }: any) => (
+    <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">{label}</label>
+        <input type={type} placeholder={placeholder} className="w-full bg-gray-100 border border-gray-200 text-black rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+    </div>
+);
+
 // --- Main Dashboard Component ---
 export default function SettingsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -120,7 +127,7 @@ export default function SettingsPage() {
             <h1 className="text-3xl font-bold text-gray-800 mb-8">Settings</h1>
 
             <div className="max-w-4xl mx-auto space-y-10">
-                {settingsSections.map(section => (
+                {/* {settingsSections.map(section => (
                     <section key={section.title} className='cursor-pointer' onClick={() => {
                       router.push('/pages/settings/profile')
                     }}>
@@ -131,7 +138,13 @@ export default function SettingsPage() {
                             ))}
                         </div>
                     </section>
-                ))}
+                ))} */}
+                 <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Profile </h2>
+                <div className="grid md:grid-cols-2 gap-4">
+                        <FormInput label="Email" placeholder="123@gmail.com" />
+                        <FormInput label="Password" placeholder="*******" type="tel" />
+                        <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" />
+                    </div>
             </div>
 
           </div>
