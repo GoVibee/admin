@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import image1 from '../../../assets/go.png';
+import { useRouter } from 'next/navigation';
 
 // --- Mock Data ---
 const venues = [
@@ -31,6 +32,7 @@ const StatusBadge = ({ status }: any) => (
 // --- Main Dashboard Component ---
 export default function DashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const router = useRouter();
 
   const sidebarNavItems = [
        { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -94,7 +96,9 @@ export default function DashboardPage() {
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Restaurants & Venues</h1>
-              <button className="bg-purple-600 text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-purple-700 transition-colors">
+              <button onClick={() => {
+                router.push('/pages/restaurants/create')
+              }} className="bg-purple-600 cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-purple-700 transition-colors">
                 Add Venue
               </button>
             </div>

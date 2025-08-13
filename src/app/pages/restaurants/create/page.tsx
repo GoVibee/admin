@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,Star ,UploadCloud} from 'lucide-react';
-import Image1 from '../../../../../assets/go.png';
+import Image1 from '../../../../assets/go.png';
 
 
 // --- Reusable Components ---
