@@ -73,6 +73,49 @@ const CustomerDetailModal = ({ booking, onClose }: any) => {
     );
 };
 
+const DeleteModal = ({ onClose }: any) => {
+
+    const modalVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="bg-white rounded-xl shadow-2xl w-full max-w-md"
+            >
+                <div className="p-6 border-b">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
+                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                            <X size={24} />
+                        </button>
+                    </div>
+                </div>
+                <div className="p-6 space-y-4">
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600 items-center">Are you sure you want to delete user</span>
+                    </div>
+                </div>
+                <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
+                        Close
+                    </button>
+                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
+                        Confirm
+                    </button>
+                </div>
+            </motion.div>
+        </div>
+    );
+};
+
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
@@ -92,6 +135,7 @@ const RoleBadge = ({ role }: any) => (
 export default function CustomersPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [d,setD] = useState<any>();
   const router = useRouter();
 
    const sidebarNavItems = [
@@ -195,8 +239,10 @@ export default function CustomersPage() {
                              <button onClick={() => setSelectedBooking(customer)} className="text-violet-800 cursor-pointer">
                                 View
                             </button>
-                        <span className="text-black mx-1"> | </span>
-                          <a href="#" className="text-red-700">Delete</a>
+                         <span className="text-black mx-1"> | </span>
+                        <button onClick={() => setD(true)} className="text-red-700 cursor-pointer">
+                                <h3>Delete</h3>
+                            </button>
                         </div>
                       </td>
                     </tr>
@@ -212,6 +258,11 @@ export default function CustomersPage() {
                   <CustomerDetailModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
               )}
             </AnimatePresence>
+            <AnimatePresence>
+                          {d && (
+                              <DeleteModal  onClose={() => setD(false)} />
+                          )}
+                        </AnimatePresence>
     </div>
   );
 }
