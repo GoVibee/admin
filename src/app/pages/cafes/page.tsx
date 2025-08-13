@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
 import Image from 'next/image';
 import image1 from '../../../assets/go.png';
+import { useRouter } from 'next/navigation';
 
 // --- Mock Data ---
 const venues = [
@@ -31,6 +32,7 @@ const StatusBadge = ({ status }: any) => (
 // --- Main Dashboard Component ---
 export default function DashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const router = useRouter();
 
    const sidebarNavItems = [
                { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -79,11 +81,11 @@ export default function DashboardPage() {
                      3
                    </span>
                  </button>
-                 <img
-                   src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                   alt="User Avatar"
-                   className="w-10 h-10 rounded-full object-cover"
-                 />
+                 <div onClick={() => {
+                router.push('/pages/settings')
+               }} className='cursor-pointer'>
+                <UserRound size={20} color='#000'/>
+               </div>
                </div>
              </header>
         

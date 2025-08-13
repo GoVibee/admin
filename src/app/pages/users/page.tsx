@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -141,11 +141,11 @@ export default function CustomersPage() {
                    3
                  </span>
                </button>
-               <img
-                 src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                 alt="User Avatar"
-                 className="w-10 h-10 rounded-full object-cover"
-               />
+               <div onClick={() => {
+                router.push('/pages/settings')
+               }} className='cursor-pointer'>
+                <UserRound size={20} color='#000'/>
+               </div>
              </div>
            </header>
 

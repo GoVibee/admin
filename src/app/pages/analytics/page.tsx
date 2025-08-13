@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X, ArrowUp } from 'lucide-react';
-import Image from 'next/image';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, Bell, Menu, X, ArrowUp } from 'lucide-react';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
-import image1 from '../../../assets/go.png';
+import { useRouter } from 'next/navigation';
+
+
 // --- Register Chart.js components ---
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, Filler);
 
@@ -103,6 +104,7 @@ const PeakBookingTimesChart = () => {
 // --- Main Dashboard Component ---
 export default function AnalyticsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const router = useRouter();
 
   const sidebarNavItems = [
     { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},

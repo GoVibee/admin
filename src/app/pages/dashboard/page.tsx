@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
 import Sidebar from "../../components/layout/Sidebar";
 import Topbar from "../../components/layout/Topbar";
 import StatCard from "../../components/pages/dashboard/StatCard";
 import BookingsOverview from "../../components/pages/bookings/bookingsOverview";
 import RecentBookingsTable from "../../components/pages/bookings/RecentBookingsTable";
 import PopularVenuesTable from "../../components/pages/venues/PopularVenuesTable";
+import { useRouter } from "next/navigation";
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
@@ -21,6 +22,7 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
 
 export default function HomePage() {
    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+   const router = useRouter();
 
     const sidebarNavItems = [
       { icon: LayoutDashboard, text: 'Dashboard', active: true,route: '/pages/dashboard'  },
@@ -64,11 +66,11 @@ export default function HomePage() {
             3
           </span>
         </button>
-        <img
-          src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-          alt="User Avatar"
-          className="w-10 h-10 rounded-full object-cover"
-        />
+       <div onClick={() => {
+                       router.push('/pages/settings')
+                      }} className='cursor-pointer'>
+                       <UserRound size={20} color='#000'/>
+                      </div>
       </div>
     </header>
 

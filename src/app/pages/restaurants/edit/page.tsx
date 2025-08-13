@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,Star ,UploadCloud} from 'lucide-react';
-import Image1 from '../../../../assets/go.png';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,Star ,UploadCloud,UserRound} from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 
 // --- Reusable Components ---
@@ -51,6 +51,7 @@ const Checkbox = ({ label }: any) => (
 // --- Main Page Component ---
 export default function CreateRestaurantPage() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const router = useRouter();
 
   const sidebarNavItems = [
        { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -99,11 +100,11 @@ export default function CreateRestaurantPage() {
                     3
                   </span>
                 </button>
-                <Image
-                  src={Image1}
-                  alt="User Avatar"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+                <div onClick={() => {
+                                router.push('/pages/settings')
+                               }} className='cursor-pointer'>
+                                <UserRound size={20} color='#000'/>
+                               </div>
               </div>
             </header>
                 <main className="p-6 lg:p-8 font-plus">

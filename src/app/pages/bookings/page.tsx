@@ -4,7 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Badge from '../../components/ui/Badge';
 import FilterDropdown from '../../components/ui/FilterDropdown';
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
 
 const bookingsData = [
   { customer: 'Sophia Carter', venue: 'The Urban Bistro', venueDetails: '', date: '2024-07-20', time: '19:00', status: 'Confirmed' as const },
@@ -100,6 +102,7 @@ export default function HomePage() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
    const [selectedBooking, setSelectedBooking] = useState<any>(null);
+   const router = useRouter();
   
     const sidebarNavItems = [
                   { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -144,11 +147,11 @@ export default function HomePage() {
                            3
                          </span>
                        </button>
-                       <img
-                         src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                         alt="User Avatar"
-                         className="w-10 h-10 rounded-full object-cover"
-                       />
+                       <div onClick={() => {
+                                       router.push('/pages/settings')
+                                      }} className='cursor-pointer'>
+                                       <UserRound size={20} color='#000'/>
+                                      </div>
                      </div>
                    </header>
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
