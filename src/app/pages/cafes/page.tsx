@@ -57,9 +57,6 @@ export default function DashboardPage() {
             <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active}route={item.route} />
           ))}
         </nav>
-        <div className="p-4 border-t">
-          <SidebarLink icon={HelpCircle} text="Help and Docs" />
-        </div>
       </aside>
       
       {/* Backdrop for mobile sidebar */}
@@ -68,7 +65,7 @@ export default function DashboardPage() {
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col">
         {/* --- Top Header --- */}
-          <header className="flex justify-between items-center mb-8">
+          <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
                 <div className="flex items-center space-x-4">
                                <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
                                    {isSidebarOpen ? <X/> : <Menu />}
@@ -97,7 +94,7 @@ export default function DashboardPage() {
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Cafes</h1>
-              <button className="bg-purple-600 text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-purple-700 transition-colors">
+              <button className="bg-purple-600 cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-purple-700 transition-colors">
                 Add Venue
               </button>
             </div>
@@ -108,7 +105,7 @@ export default function DashboardPage() {
               <input
                 type="text"
                 placeholder="Search by venue name..."
-                className="w-full bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
 

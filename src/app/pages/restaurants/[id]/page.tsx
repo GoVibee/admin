@@ -35,7 +35,7 @@ const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
 const FormInput = ({ label, placeholder, type = 'text' }: any) => (
     <div>
         <label className="block text-sm font-medium text-gray-600 mb-1">{label}</label>
-        <input type={type} placeholder={placeholder} className="w-full bg-gray-100 border border-gray-200 rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+        <input type={type} placeholder={placeholder} className="w-full bg-gray-100 border border-gray-200 text-black rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" />
     </div>
 );
 
@@ -112,7 +112,7 @@ export default function VenueDetailsPage() {
                     <FormInput label="Venue Name" placeholder="e.g., The Golden Spoon" />
                     <div>
                         <label className="block text-sm font-medium text-gray-600 mb-1">Description</label>
-                        <textarea placeholder="A short description of the venue..." rows={4} className="w-full bg-gray-100 border border-gray-200 rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                        <textarea placeholder="A short description of the venue..." rows={4} className="w-full bg-gray-100 text-black border border-gray-200 rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormInput label="Address" placeholder="123 Main St, Anytown" />

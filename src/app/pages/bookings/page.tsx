@@ -65,9 +65,6 @@ export default function HomePage() {
                  <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route} />
                ))}
              </nav>
-             <div className="p-4 border-t">
-               <SidebarLink icon={HelpCircle} text="Help and Docs" />
-             </div>
            </aside>
            
            {/* Backdrop for mobile sidebar */}
@@ -99,7 +96,7 @@ export default function HomePage() {
           {/* Header Section */}
           <div  className="flex flex-col font-plus md:flex-row md:items-center md:justify-between mb-8 gap-4">
             <h1 className="text-3xl font-bold text-gray-900">Bookings</h1>
-            <button className="bg-violet-600 text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
+            <button className="bg-violet-600 cursor-pointer text-white px-4 py-2 rounded-lg font-semibold shadow-sm hover:bg-violet-700 transition-colors self-start md:self-auto">
               New Booking
             </button>
           </div>
@@ -112,7 +109,7 @@ export default function HomePage() {
                 <input
                   type="text"
                   placeholder="Search bookings..."
-                  className="w-full pl-12 pr-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-400"
+                  className="w-full pl-12 text-black pr-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-400"
                 />
               </div>
               <div className="flex flex-wrap items-center gap-3 font-plus">
@@ -168,8 +165,14 @@ export default function HomePage() {
                       </td>
                       <td className="flex justify-between items-center md:table-cell px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <span className="font-semibold text-gray-600 md:hidden mr-2">Actions:</span>
-                        <a href="#" className="text-violet-600 hover:text-violet-800">
-                          View | Edit | Cancel
+                        <a href="#" className="text-gray-600 hover:text-violet-800 mr-3">
+                          View | 
+                        </a>
+                        <a href="#" className="text-gray-600 hover:text-violet-800 mr-3">
+                          Edit | 
+                        </a>
+                        <a href="#" className="text-gray-600 hover:text-violet-800">
+                         Cancel
                         </a>
                       </td>
                     </tr>

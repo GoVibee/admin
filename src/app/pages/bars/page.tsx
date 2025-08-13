@@ -57,9 +57,6 @@ export default function DashboardPage() {
             <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
           ))}
         </nav>
-        <div className="p-4 border-t">
-          <SidebarLink icon={HelpCircle} text="Help and Docs" />
-        </div>
       </aside>
       
       {/* Backdrop for mobile sidebar */}
@@ -108,7 +105,7 @@ export default function DashboardPage() {
               <input
                 type="text"
                 placeholder="Search by venue name..."
-                className="w-full bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
 

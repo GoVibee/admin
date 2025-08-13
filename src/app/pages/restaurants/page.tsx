@@ -89,7 +89,6 @@ export default function DashboardPage() {
               </div>
             </header>
         
-
         {/* --- Page Content --- */}
         <main className="flex-1 p-6 lg:p-8">
           <div className="container mx-auto">
@@ -109,7 +108,7 @@ export default function DashboardPage() {
               <input
                 type="text"
                 placeholder="Search by venue name..."
-                className="w-full bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
 
@@ -139,7 +138,7 @@ export default function DashboardPage() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center space-x-3 text-sm font-medium text-gray-500">
-                          <a  href={`/restaurants/[id]`} className="hover:text-purple-600">Edit</a>
+                          <a  href={`/pages/restaurants/edit`} className="hover:text-purple-600">Edit</a>
                           <span className="text-gray-300">|</span>
                           <a href="#" className="hover:text-purple-600">Disable</a>
                           <span className="text-gray-300">|</span>

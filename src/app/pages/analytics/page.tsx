@@ -108,11 +108,11 @@ export default function AnalyticsPage() {
     { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'},
     { icon: Calendar, text: 'Bookings',route: '/pages/bookings' },
     { icon: Home, text: 'Restaurants',route: '/pages/restaurants' },
-    { icon: Settings, text: 'Settings',route: '/pages/settings' },
     { icon: BarChart2, text: 'Analytics', active: true,route: '/pages/analytics' },
     { icon: Beer, text: 'Bars and Clubs',route: '/pages/bars'},
     { icon: Coffee, text: 'Cafes',route: '/pages/cafes' },
     { icon: Users, text: 'Users',route: '/pages/users' },
+    { icon: Settings, text: 'Settings',route: '/pages/settings' }
   ];
 
   return (

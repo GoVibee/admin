@@ -67,7 +67,7 @@ export default function CustomersPage() {
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col">
         {/* --- Top Header --- */}
-             <header className="flex justify-between items-center mb-8">
+             <header className="flex justify-between items-center w-[90%] mx-auto mt-5 mb-8">
               <div className="flex items-center space-x-4">
                              <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
                                  {isSidebarOpen ? <X/> : <Menu />}
@@ -95,7 +95,7 @@ export default function CustomersPage() {
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
               <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Customers</h1>
-              <button className="bg-purple-100 text-purple-700 px-5 py-2.5 rounded-lg font-semibold hover:bg-purple-200 transition-colors">
+              <button className="bg-purple-100 cursor-pointer text-purple-700 px-5 py-2.5 rounded-lg font-semibold hover:bg-purple-200 transition-colors">
                 Add Customer
               </button>
             </div>
@@ -106,7 +106,7 @@ export default function CustomersPage() {
               <input
                 type="text"
                 placeholder="Search customers..."
-                className="w-full bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
 

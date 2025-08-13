@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Bell, Menu, X, User, Users2, BellRing, CreditCard, Shield, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
-import image1 from '../../../assets/go.png';
+import { useRouter } from 'next/navigation';
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
@@ -29,6 +28,8 @@ const SettingsItem = ({ icon: Icon, title, description }: any) => (
 // --- Main Dashboard Component ---
 export default function SettingsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const router = useRouter();
+
 
     const sidebarNavItems = [
            { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -46,7 +47,7 @@ export default function SettingsPage() {
           title: 'Account',
           items: [
               { icon: User, title: 'Account details', description: 'Manage your account details' },
-              { icon: Users2, title: 'Team members', description: 'Manage your team members' },
+              // { icon: Users2, title: 'Team members', description: 'Manage your team members' },
           ]
       },
     //   {
@@ -91,7 +92,7 @@ export default function SettingsPage() {
       {/* --- Main Content --- */}
       <div className="flex-1 flex flex-col">
         {/* --- Top Header --- */}
-            <header className="flex justify-between items-center mb-8">
+            <header className="flex justify-between items-center mb-8 w-[90%] mx-auto mt-5">
              <div className="flex items-center space-x-4">
                             <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden text-gray-600">
                                 {isSidebarOpen ? <X/> : <Menu />}
@@ -120,7 +121,9 @@ export default function SettingsPage() {
 
             <div className="max-w-4xl mx-auto space-y-10">
                 {settingsSections.map(section => (
-                    <section key={section.title}>
+                    <section key={section.title} className='cursor-pointer' onClick={() => {
+                      router.push('/pages/settings/profile')
+                    }}>
                         <h2 className="text-xl font-semibold text-gray-800 mb-4">{section.title}</h2>
                         <div className="space-y-4">
                             {section.items.map(item => (
