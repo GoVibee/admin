@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
-import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound } from 'lucide-react';
+import { Home, Calendar, LayoutDashboard, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X,UserRound,CornerDownRight } from 'lucide-react';
 import Sidebar from "../../components/layout/Sidebar";
 import Topbar from "../../components/layout/Topbar";
 import StatCard from "../../components/pages/dashboard/StatCard";
@@ -47,6 +47,10 @@ export default function HomePage() {
             <SidebarLink key={item.text} icon={item.icon} text={item.text} active={item.active} route={item.route}/>
           ))}
         </nav>
+        <div  className="p-4 border-t">
+          <CornerDownRight size={24} color="#000"/> 
+          <button> Logout </button>
+        </div>
       </aside>
       
       {/* Backdrop for mobile sidebar */}
