@@ -7,13 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Mock Data ---
 const customers = [
-  { id: 1, name: 'Sophia Carter', email: 'sophia.carter@email.com', joinDate: '2023-01-15', lastBooking: '2024-03-20', role: 'User' },
-  { id: 2, name: 'Ethan Bennett', email: 'ethan.bennett@email.com', joinDate: '2022-11-08', lastBooking: '2024-02-28', role: 'Admin' },
-  { id: 3, name: 'Olivia Hayes', email: 'olivia.hayes@email.com', joinDate: '2023-05-22', lastBooking: '2024-03-10', role: 'User' },
-  { id: 4, name: 'Liam Foster', email: 'liam.foster@email.com', joinDate: '2022-09-03', lastBooking: '2024-01-15', role: 'User' },
-  { id: 5, name: 'Ava Morgan', email: 'ava.morgan@email.com', joinDate: '2023-02-10', lastBooking: '2024-03-25', role: 'User' },
-  { id: 6, name: 'Noah Parker', email: 'noah.parker@email.com', joinDate: '2022-12-18', lastBooking: '2024-02-10', role: 'User' },
-  { id: 7, name: 'Isabella Reed', email: 'isabella.reed@email.com', joinDate: '2023-04-05', lastBooking: '2024-03-05', role: 'User' },
+  { id: 1, name: 'Sophia Carter', email: 'sophia.carter@email.com', joinDate: '2023-01-15', lastBooking: '2024-03-20', role: 'User',phonenumber: '0540656226' }
+  
 ];
 
 // --- Customer Detail Modal Component ---
@@ -119,7 +114,7 @@ const DeleteModal = ({ onClose }: any) => {
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
-  <a href={route} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+  <a href={route} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
     <Icon className="w-5 h-5" />
     <span className="flex-1">{text}</span>
   </a>
@@ -155,7 +150,7 @@ export default function CustomersPage() {
        <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
         <div className="p-6 flex items-center space-x-2 border-b">
           <div className="text-2xl font-bold text-gray-800">
-            <span className="text-purple-600">Go</span>Vibe
+            <span className="text-[#3B0A45]">Go</span>Vibe
           </div>
         </div>
         <nav className="flex-1 p-4 space-y-2">
@@ -222,8 +217,7 @@ export default function CustomersPage() {
                   <tr>
                     <th className="p-4 font-semibold text-gray-600">Name</th>
                     <th className="p-4 font-semibold text-gray-600 hidden md:table-cell">Email</th>
-                    <th className="p-4 font-semibold text-gray-600 hidden lg:table-cell">Join Date</th>
-                    <th className="p-4 font-semibold text-gray-600 hidden lg:table-cell">Last Booking</th>
+                    <th className="p-4 font-semibold text-gray-600 hidden lg:table-cell">Phone Number</th>
                     <th className="p-4 font-semibold text-gray-600">Actions</th>
                   </tr>
                 </thead>
@@ -232,8 +226,7 @@ export default function CustomersPage() {
                     <tr key={customer.id} className="border-b border-gray-200 last:border-b-0 hover:bg-gray-50">
                       <td className="p-4 font-medium text-gray-800">{customer.name}</td>
                       <td className="p-4 text-gray-600 hidden md:table-cell">{customer.email}</td>
-                      <td className="p-4 text-gray-600 hidden lg:table-cell">{customer.joinDate}</td>
-                      <td className="p-4 text-gray-600 hidden lg:table-cell">{customer.lastBooking}</td>
+                      <td className="p-4 text-gray-600 hidden lg:table-cell">{customer.phonenumber}</td>
                       <td className="p-4">
                         <div className="flex items-center space-x-3 text-sm font-medium text-gray-500">
                              <button onClick={() => setSelectedBooking(customer)} className="text-violet-800 cursor-pointer">
