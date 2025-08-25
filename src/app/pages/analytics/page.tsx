@@ -21,7 +21,7 @@ const mostSearchedVenues = [
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
-  <a href={route} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+  <a href={route} className={`flex font-plus items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
     <Icon className="w-5 h-5" />
     <span className="flex-1">{text}</span>
   </a>
@@ -35,7 +35,7 @@ const BookingTrendsChart = () => {
             label: 'Bookings',
             data: [65, 59, 80, 81, 56, 95, 70],
             fill: false,
-            borderColor: '#8B5CF6',
+            borderColor: '#3B0A45',
             tension: 0.4,
             pointRadius: 0,
         }]
@@ -82,7 +82,7 @@ const PeakBookingTimesChart = () => {
             label: 'Bookings',
             data: [80, 60, 95, 30, 40, 35, 70],
             backgroundColor: '#F3E8FF',
-            borderColor: '#C4B5FD',
+            borderColor: '#3B0A45',
             borderWidth: 1,
             borderRadius: 4,
         }]
@@ -123,7 +123,7 @@ export default function AnalyticsPage() {
        <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
         <div className="p-6 flex items-center space-x-2 border-b">
           <div className="text-2xl font-bold text-gray-800">
-            <span className="text-purple-600">Go</span>Vibe
+            <span className="text-[#3B0A45]">Go</span>Vibe
           </div>
         </div>
         <nav className="flex-1 p-4 space-y-2">
