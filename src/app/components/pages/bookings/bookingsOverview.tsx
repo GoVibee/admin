@@ -12,7 +12,7 @@ export default function BookingsOverviewChart() {
         <svg width="100%" height="100%" viewBox="0 0 500 150" preserveAspectRatio="none">
           <path
             d="M0,100 C50,50 100,120 150,90 S250,30 300,80 S400,130 450,100 L500,110"
-            stroke="#8B5CF6"
+            stroke="#3B0A45"
             strokeWidth="3"
             fill="none"
             strokeLinecap="round"
