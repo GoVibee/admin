@@ -6,18 +6,32 @@ import logo from '../assets/go.png';
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Oval } from 'react-loader-spinner';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function SignInPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading,setLoading] = useState(false);
   const router = useRouter();
+  const {Login} = useAuth();
+  const [formdata,setFormdata] = useState({
+    email: '',
+    password: ''
+  });
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
-    router.push('/pages/dashboard');
+    const data = await Login(formdata)
+    if(data){
+      setLoading(false);
+      router.push('/pages/dashboard')
+    }
+    console.log(data);
   };
 
   return (
@@ -37,6 +51,9 @@ export default function SignInPage() {
             name="email"
             type="email"
             placeholder=" "
+            required
+            value={formdata.email}
+            onChange={(e) => setFormdata({...formdata,email: e.target.value })}
             className="peer block w-full font-plus px-4 py-3 border border-gray-300 rounded-lg 
                       focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:border-transparent 
                       text-gray-900"
@@ -60,6 +77,9 @@ export default function SignInPage() {
             name="password"
             type={showPassword ? 'text' : 'password'}
             placeholder=" "
+            required
+            value={formdata.password}
+            onChange={(e) => setFormdata({...formdata,password:e.target.value})}
             className="peer block w-full font-plus px-4 py-3 border border-gray-300 rounded-lg 
                       focus:outline-none focus:ring-2 focus:ring-[#3B0A45] focus:border-transparent 
                       text-gray-900"
@@ -90,7 +110,18 @@ export default function SignInPage() {
             type="submit"
             className="w-full cursor-pointer bg-[#3B0A45] text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3B0A45] transition-colors duration-300 font-plus"
           >
-            Sign in
+             {loading ? (
+                                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                              <Oval
+                                                visible={true}
+                                                height="30"
+                                                width="30"
+                                                color="#ffffff"
+                                                wrapperStyle={{}}
+                                                wrapperClass=""
+                                              />
+                                            </div>
+                                          ) : 'Sign in'}
           </button>
         </form>
       </div>
