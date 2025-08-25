@@ -31,7 +31,6 @@ export default function SignInPage() {
       setLoading(false);
       router.push('/pages/dashboard')
     }
-    console.log(data);
   };
 
   return (

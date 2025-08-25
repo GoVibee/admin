@@ -8,7 +8,6 @@ export const useAuth = () => {
         if (_data.access_token) {
       // Save token in localStorage
       localStorage.setItem("token", _data.access_token);
-      console.log("Token saved:", _data);
     }
 
         return _data;
