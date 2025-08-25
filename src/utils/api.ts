@@ -1,7 +1,8 @@
 import {
     signinUrl,
     usersUrl,
-    deleteuserurl
+    deleteuserurl,
+    getuserUrl
 } from './endpoints';
 
 export const SignIn = async(data: any) => {
@@ -56,3 +57,22 @@ export const deleteUser = async(id: any) => {
         console.log(err)
     }
 }
+
+export const getUser = async() => {
+    const token = localStorage.getItem('token')
+    const id = localStorage.getItem('adminId')
+    try{
+        const response = await fetch(`${getuserUrl}/${id}`,{
+            method: 'GET',
+             headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+
+        return response;
+    }catch(err){
+        console.log(err)
+    }
+}
+

@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Bell, Menu, X, User, Users2, BellRing, CreditCard, Shield, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
+
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
@@ -25,10 +27,10 @@ const SettingsItem = ({ icon: Icon, title, description }: any) => (
     </a>
 )
 
-const FormInput = ({ label, placeholder, type = 'text' }: any) => (
+const FormInput = ({ label, placeholder, type = 'text',value }: any) => (
     <div>
         <label className="block text-sm font-medium text-gray-600 mb-1">{label}</label>
-        <input type={type} placeholder={placeholder} className="w-full bg-gray-100 border border-gray-200 text-black rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+        <input type={type} placeholder={placeholder} defaultValue={value || ''} className="w-full bg-gray-100 border border-gray-200 text-black rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-[#3B0A45]" />
     </div>
 );
 
@@ -36,6 +38,17 @@ const FormInput = ({ label, placeholder, type = 'text' }: any) => (
 export default function SettingsPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
+  const {GetUser} = useAuth();
+  const [user,setUser] = useState<any>([])
+
+  const fetch = async() => {
+    const data = await GetUser();
+    setUser(data);
+  }
+
+  useEffect(() => {
+    fetch();
+  },[])
 
 
     const sidebarNavItems = [
@@ -141,9 +154,14 @@ export default function SettingsPage() {
                 ))} */}
                  <h2 className="text-xl font-semibold text-gray-800 mb-4">Account Profile </h2>
                 <div className="grid md:grid-cols-2 gap-4">
-                        <FormInput label="Email" placeholder="123@gmail.com" />
-                        <FormInput label="Password" placeholder="*******" type="tel" />
-                        <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" />
+                        <FormInput label="Email" placeholder="123@gmail.com" value={user.email}/>
+                        {/* <FormInput label="Password" placeholder="*******" type="tel" />
+                        <FormInput label="Phone Number" placeholder="(555) 123-4567" type="tel" /> */}
+                    </div>
+                    <h3 className='text-black'>Change pasword </h3>
+                    <div className="grid md:grid-cols-2 gap-4 -mt-4">
+                        <FormInput label="Old password" placeholder="*******" />
+                        <FormInput label="New Password" placeholder="*******"  />
                     </div>
                     <div className="mt-6">
                     <button className="w-full bg-[#3B0A45] cursor-pointer text-white font-semibold rounded-lg py-2.5  transition-colors">

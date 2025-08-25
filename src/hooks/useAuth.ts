@@ -1,4 +1,4 @@
-import { SignIn,getUsers,deleteUser } from "@/utils/api";
+import { SignIn,getUsers,deleteUser,getUser } from "@/utils/api";
 
 export const useAuth = () => {
     const Login = async(data: any) => {
@@ -7,6 +7,7 @@ export const useAuth = () => {
         if (_data.access_token) {
       // Save token in localStorage
       localStorage.setItem("token", _data.access_token);
+      localStorage.setItem("adminId",_data.adminId)
     }
 
         return _data;
@@ -24,9 +25,16 @@ export const useAuth = () => {
         return data
     }
 
+    const GetUser = async() => {
+        const response = await getUser();
+        const data = await response?.json();
+        return data;
+    }
+
     return {
         Login,
         GetUsers,
-        DeleteUser
+        DeleteUser,
+        GetUser
     }
 }
