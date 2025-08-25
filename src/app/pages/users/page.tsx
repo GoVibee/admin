@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Home, Calendar, LayoutDashboard,UserRound, Settings, BarChart2, Beer, Coffee, Users, HelpCircle, Search, Bell, Menu, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '@/hooks/useAuth';
 
 // --- Mock Data ---
-const customers = [
-  { id: 1, name: 'Sophia Carter', email: 'sophia.carter@email.com', joinDate: '2023-01-15', lastBooking: '2024-03-20', role: 'User',phonenumber: '0540656226' }
+// const customers = [
+//   { id: 1, name: 'Sophia Carter', email: 'sophia.carter@email.com', joinDate: '2023-01-15', lastBooking: '2024-03-20', role: 'User',phonenumber: '0540656226' }
   
-];
 
 // --- Customer Detail Modal Component ---
 const CustomerDetailModal = ({ booking, onClose }: any) => {
@@ -47,18 +47,18 @@ const CustomerDetailModal = ({ booking, onClose }: any) => {
                         <span className="font-semibold text-gray-600">Email:</span>
                         <span className="text-gray-800">{booking.email}</span>
                     </div>
-                    {/* <div className="flex justify-between">
-                        <span className="font-semibold text-gray-600">Date & Time:</span>
-                        <span className="text-gray-800">{booking.date} at {booking.time}</span>
-                    </div> */}
+                    <div className="flex justify-between">
+                        <span className="font-semibold text-gray-600">Phone Number:</span>
+                        <span className="text-gray-800">{booking.phonenumber}</span>
+                    </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
                     <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
+                    {/* <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors">
                         Delete
-                    </button>
+                    </button> */}
                     {/* <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
                         Confirm
                     </button> */}
@@ -68,13 +68,24 @@ const CustomerDetailModal = ({ booking, onClose }: any) => {
     );
 };
 
-const DeleteModal = ({ onClose }: any) => {
+const DeleteModal = ({ booking,d,setD,setCustomers }: any) => {
+  const {DeleteUser} = useAuth();
+  const router = useRouter();
 
     const modalVariants = {
         hidden: { opacity: 0, scale: 0.95 },
         visible: { opacity: 1, scale: 1 },
         exit: { opacity: 0, scale: 0.95 }
     };
+
+    const handleDelete = async() => {
+      const res = await DeleteUser(booking._id)
+      if(res){
+        router.refresh()
+        setD(false)
+        setCustomers((prev: any[]) => prev.filter((u) => u._id !== booking._id));
+      }
+    }
 
     return (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
@@ -88,7 +99,7 @@ const DeleteModal = ({ onClose }: any) => {
                 <div className="p-6 border-b">
                     <div className="flex justify-between items-center">
                         <h2 className="text-xl font-bold text-gray-800">Confirm </h2>
-                        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+                        <button onClick={() => setD(false)} className="text-gray-400 hover:text-gray-600">
                             <X size={24} />
                         </button>
                     </div>
@@ -99,10 +110,10 @@ const DeleteModal = ({ onClose }: any) => {
                     </div>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-b-xl flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
-                    <button onClick={onClose} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
+                    <button onClick={() => setD(false)} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors">
                         Close
                     </button>
-                    <button className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
+                    <button onClick={handleDelete} className="px-4 cursor-pointer py-2 rounded-lg font-semibold bg-green-100 text-green-700 hover:bg-green-200 transition-colors">
                         Confirm
                     </button>
                 </div>
@@ -130,8 +141,11 @@ const RoleBadge = ({ role }: any) => (
 export default function CustomersPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState<any>(null);
+  const [deletecustomer,setDeleteCustomer] = useState<any>(null);
   const [d,setD] = useState<any>();
   const router = useRouter();
+  const [customers,setCustomers] = useState<any>([])
+  const {GetUsers} = useAuth();
 
    const sidebarNavItems = [
              { icon: LayoutDashboard, text: 'Dashboard',route: '/pages/dashboard'  },
@@ -143,6 +157,15 @@ export default function CustomersPage() {
              { icon: Users, text: 'Users',route: '/pages/users',active: true },
              { icon: Settings, text: 'Settings',route: '/pages/settings'},
            ];
+const fetch = async() => {
+  const data = await GetUsers();
+  if(data){
+    setCustomers(data)
+  }
+}
+    useEffect(() => {
+      fetch();
+    },[])
 
   return (
     <div className=" lg:flex min-h-screen bg-gray-50 w-full">
@@ -189,7 +212,7 @@ export default function CustomersPage() {
            </header>
 
         {/* --- Page Content --- */}
-        <main className="flex-1 p-6 lg:p-8">
+        <main className="flex-1 p-6 lg:p-8 font-plus">
           <div className="container mx-auto">
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
@@ -206,7 +229,7 @@ export default function CustomersPage() {
               <input
                 type="text"
                 placeholder="Search customers..."
-                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full text-black font-plus bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
               />
             </div>
 
@@ -222,8 +245,8 @@ export default function CustomersPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {customers.map(customer => (
-                    <tr key={customer.id} className="border-b border-gray-200 last:border-b-0 hover:bg-gray-50">
+                  {customers.map((customer: any) => (
+                    <tr key={customer._id} className="border-b border-gray-200 last:border-b-0 hover:bg-gray-50">
                       <td className="p-4 font-medium text-gray-800">{customer.name}</td>
                       <td className="p-4 text-gray-600 hidden md:table-cell">{customer.email}</td>
                       <td className="p-4 text-gray-600 hidden lg:table-cell">{customer.phonenumber}</td>
@@ -233,7 +256,10 @@ export default function CustomersPage() {
                                 View
                             </button>
                          <span className="text-black mx-1"> | </span>
-                        <button onClick={() => setD(true)} className="text-red-700 cursor-pointer">
+                        <button onClick={() => {
+                          setD(true)
+                          setDeleteCustomer(customer)
+                        }} className="text-red-700 cursor-pointer">
                                 <h3>Delete</h3>
                             </button>
                         </div>
@@ -253,7 +279,7 @@ export default function CustomersPage() {
             </AnimatePresence>
             <AnimatePresence>
                           {d && (
-                              <DeleteModal  onClose={() => setD(false)} />
+                              <DeleteModal  setD={setD} d={d}  booking={deletecustomer} setCustomers={setCustomers}/>
                           )}
                         </AnimatePresence>
     </div>

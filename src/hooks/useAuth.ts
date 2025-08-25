@@ -1,9 +1,8 @@
-import { SignIn } from "@/utils/api";
+import { SignIn,getUsers,deleteUser } from "@/utils/api";
 
 export const useAuth = () => {
     const Login = async(data: any) => {
         const response = await SignIn(data)
-        console.log(response)
         const _data = await response?.json();
         if (_data.access_token) {
       // Save token in localStorage
@@ -13,7 +12,21 @@ export const useAuth = () => {
         return _data;
     }
 
+    const GetUsers = async() => {
+        const response = await getUsers()
+        const  data = await response?.json();
+        return data;
+    }
+
+    const DeleteUser = async(id: any) => {
+        const response = await deleteUser(id);
+        const data = await response?.json()
+        return data
+    }
+
     return {
-        Login
+        Login,
+        GetUsers,
+        DeleteUser
     }
 }
