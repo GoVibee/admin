@@ -18,7 +18,7 @@ const venues = [
 
 // --- Reusable Components ---
 const SidebarLink = ({ icon: Icon, text, active,route }: any) => (
-  <a href={route} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
+  <a href={route} className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${active ? 'bg-purple-100 text-[#3B0A45] font-semibold' : 'text-gray-600 hover:bg-gray-100'}`}>
     <Icon className="w-5 h-5" />
     <span className="flex-1">{text}</span>
   </a>
@@ -140,7 +140,7 @@ export default function DashboardPage() {
       <aside className={`fixed inset-y-0 left-0 bg-white shadow-sm z-50 w-64 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:flex lg:flex-col`}>
         <div className="p-6 flex items-center space-x-2 border-b">
           <div className="text-2xl font-bold text-gray-800">
-            <span className="text-purple-600">Go</span>Vibe
+            <span className="text-[#3B0A45]">Go</span>Vibe
           </div>
         </div>
         <nav className="flex-1 p-4 space-y-2">
@@ -186,7 +186,7 @@ export default function DashboardPage() {
               <h1 className="text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Restaurants & Venues</h1>
               <button onClick={() => {
                 router.push('/pages/restaurants/create')
-              }} className="bg-purple-600 cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md hover:bg-purple-700 transition-colors">
+              }} className="bg-[#3B0A45] cursor-pointer text-white px-5 py-2.5 rounded-lg font-semibold shadow-md  transition-colors">
                 Add Venue
               </button>
             </div>
@@ -197,7 +197,7 @@ export default function DashboardPage() {
               <input
                 type="text"
                 placeholder="Search by venue name..."
-                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full text-black bg-white border border-gray-200 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-[#3B0A45]"
               />
             </div>
 
